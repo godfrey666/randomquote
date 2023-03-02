@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" >
+  <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+<title>Random Quote machine</title>
+
+  <script>
+    const QUOTEBANK = [
+      {
+        quote:"Life is what happens when you're busy making other plans.",
+        author: "John Lennon"
+      },
+      {
+        quote:"if life were predictable it would cease to be life, and be without flavor.",
+        author: "Eleanor Roosevelt"
+      },
+      {
+        quote:"he way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+      },
+
+      {
+        quote:"The unexamined life is not worth living",
+        author: "Socrates"
+      },
+      {
+        quote:"Whereof one cannot speak, thereof one must be silent",
+        author: "Ludwig Wittgenstein"
+      },
+      {
+        quote:"Entities should not be multiplied unnecessaril",
+        author: " William of Ockham"
+      },
+
+      {
+        quote:"The life of man (in a state of nature) is solitary, poor, nasty, brutish, and short.",
+        author: "Thomas Hobbes"
+      },
+      {
+        quote:" think therefore I am” (“Cogito, ergo sum”)",
+        author: "René Descartes"
+      },
+      {
+        quote:"He who thinks great thoughts, often makes great errors",
+        author: "Martin Heidegger"
+      }, 
+      {
+        quote:"We live in the best of all possible worlds",
+        author: " Gottfried Wilhelm Leibniz"
+      },
+      {
+        quote:"What is rational is actual and what is actual is rational",
+        author: "G. W. F. Hegel"
+      },
+      {
+        quote:"One cannot step twice in the same river.",
+        author: "Heraclitu"
+      }
+
+    ];
+
+
+    window.onload = init;
+    function init() {
+     generateQuote()
+    }
+
+
+    function generateQuote() {
+      let quoteSize = QUOTEBANK.length;
+      let randomIndex = Math.floor(Math.random() * quoteSize);
+      let randomQuoteData = QUOTEBANK[randomIndex];
+
+      let quoteText = encodeURIComponent(randomQuoteData.quote);
+      let authorText = encodeURIComponent(randomQuoteData.author);
+      let twitterLink = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${quoteText} - ${authorText}`;
+
+
+      document.getElementById("text").innerText = randomQuoteData.quote;
+      document.getElementById("author").innerText = randomQuoteData.author;
+      document.getElementById("tweet-quote").href = twitterLink;
+    }
+
+
+  </script>
+</head>
+ <body>
+<div class="container">
+  <div class="row py-5">
+  <div class="col-md-8 offset-md-2">
+    <div class="card text-center">
+      <wrapper id="quote-box">
+      <div class="card-header">Random Quote Generater</div>
+       <div class="card-body">
+         <p class="card-title"><div id="text"></div></p>
+         <p class="card-text" ><div id="author" class="text-muted"></div></p>
+           <button id="new-quote" onClick="generateQuote();"target="_blank" class="btn btn-success">New Quote</button>
+           <a id="tweet-quote" href="twitterLink" target="_blank" class="btn btn-primary">Tweet Quote</a>
+      </div>
+       <div class="card-footer text-muted">
+        by Godfrey Mutabazi
+       </div>
+      </div>
+    </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script> 
+   <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+   
+</body>
+</html>
